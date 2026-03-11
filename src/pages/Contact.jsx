@@ -58,21 +58,36 @@ const Contact = () => {
     <div className="w-full bg-[#FAFAFA] pt-20 font-sans">
       
       {/* 1. LUXURY HERO HEADER */}
-      <section className="relative w-full h-[60vh] flex items-center justify-center text-brand-light">
-        {/* Premium Concierge / Lounge Background */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center z-0"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark/90 z-0"></div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10">
-          <span className="bg-brand-gold text-brand-dark px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] rounded-sm mb-6 inline-block shadow-lg">Exclusive Service</span>
-          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 drop-shadow-2xl text-gray-700">
-            Begin Your Journey
-          </h1>
-          <p className="text-lg md:text-xl font-light drop-shadow-lg text-gray-200 tracking-wide max-w-2xl mx-auto">
-            Connect with our dedicated travel artisans to craft your perfect international holiday or bespoke honeymoon experience.
-          </p>
-        </div>
-      </section>
+      <section className="relative w-full h-[60vh] flex items-center justify-center text-white">
+
+  {/* Background Image */}
+  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570')] bg-cover bg-center"></div>
+
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+
+  {/* Content */}
+  <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+
+    {/* Badge */}
+    <span className="bg-yellow-500 text-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] rounded-md mb-6 inline-block shadow-lg">
+      Exclusive Service
+    </span>
+
+    {/* Heading */}
+    <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
+      Begin Your Journey
+    </h1>
+
+    {/* Description */}
+    <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+      Connect with our dedicated travel artisans to craft your perfect
+      international holiday or bespoke honeymoon experience.
+    </p>
+
+  </div>
+
+</section>
 
       {/* 2. CONTACT INFO & FORM SECTION */}
       <section className="max-w-7xl mx-auto px-6 py-24">

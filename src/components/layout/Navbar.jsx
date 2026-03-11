@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 bg-transparent ">
+    <nav className="fixed w-full z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           
@@ -18,25 +18,11 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-brand-dark hover:text-yellow-500 font-sans font-medium transition-colors">
-  Home
-</Link>
-
-<Link to="/packages" className="text-brand-dark hover:text-yellow-500 font-sans font-medium transition-colors">
-  Packages
-</Link>
-
-<Link to="/visa" className="text-brand-dark hover:text-yellow-500 font-sans font-medium transition-colors">
-  Visa
-</Link>
-
-<Link to="/about" className="text-brand-dark hover:text-yellow-500 font-sans font-medium transition-colors">
-  About
-</Link>
-
-<Link to="/contact" className="text-brand-dark hover:text-yellow-500 font-sans font-medium transition-colors">
-  Contact
-</Link>
+            <Link to="/" className="text-brand-dark hover:text-brand-blue font-sans font-medium transition-colors">Home</Link>
+            <Link to="/packages" className="text-brand-dark hover:text-brand-blue font-sans font-medium transition-colors">Packages</Link>
+            <Link to="/visa" className="text-brand-dark hover:text-brand-blue font-sans font-medium transition-colors">Visa</Link>
+            <Link to="/about" className="text-brand-dark hover:text-brand-blue font-sans font-medium transition-colors">About</Link>
+            <Link to="/contact" className="text-brand-dark hover:text-brand-blue font-sans font-medium transition-colors">Contact</Link>
             <Link to="/contact" className="bg-brand-gold text-brand-dark px-6 py-2 rounded-sm font-semibold hover:bg-yellow-500 transition-all shadow-sm">
               Get Free Quote
             </Link>
