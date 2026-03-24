@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Contact = () => {
+  // --- SCROLL TO TOP ON LOAD ---
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     destination: '',
+    tripType: '',     // Naya field
     travelDate: '',
+    travelers: '',    // Naya field
     budget: ''
   });
 
@@ -43,7 +50,8 @@ const Contact = () => {
       
       if (result.success) {
         setSubmitMessage("Thank you! Your inquiry has been elegantly received. Our luxury travel advisor will contact you shortly.");
-        setFormData({ name: '', phone: '', destination: '', travelDate: '', budget: '' });
+        // Clear all fields including the new ones
+        setFormData({ name: '', phone: '', destination: '', tripType: '', travelDate: '', travelers: '', budget: '' });
       } else {
         setSubmitMessage("Something went wrong. Please try again or contact us directly on WhatsApp.");
       }
@@ -59,35 +67,27 @@ const Contact = () => {
       
       {/* 1. LUXURY HERO HEADER */}
       <section className="relative w-full h-[60vh] flex items-center justify-center text-white">
-
-  {/* Background Image */}
-  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570')] bg-cover bg-center"></div>
-
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
-
-  {/* Content */}
-  <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-
-    {/* Badge */}
-    <span className="bg-yellow-500 text-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] rounded-md mb-6 inline-block shadow-lg">
-      Exclusive Service
-    </span>
-
-    {/* Heading */}
-    <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
-      Begin Your Journey
-    </h1>
-
-    {/* Description */}
-    <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
-      Connect with our dedicated travel artisans to craft your perfect
-      international holiday or bespoke honeymoon experience.
-    </p>
-
-  </div>
-
-</section>
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570')] bg-cover bg-center"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        {/* Content */}
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto animate-fade-in-up">
+          {/* Badge */}
+          <span className="bg-yellow-500 text-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] rounded-md mb-6 inline-block shadow-lg">
+            Exclusive Service
+          </span>
+          {/* Heading */}
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
+            Begin Your Journey
+          </h1>
+          {/* Description */}
+          <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
+            Connect with our dedicated travel artisans to craft your perfect
+            international holiday or bespoke honeymoon experience.
+          </p>
+        </div>
+      </section>
 
       {/* 2. CONTACT INFO & FORM SECTION */}
       <section className="max-w-7xl mx-auto px-6 py-24">
@@ -104,20 +104,32 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              {/* Info Card 1 */}
-              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors">
-                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10">
+              
+              {/* Info Card 1: Delhi Office */}
+              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors group">
+                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10 group-hover:bg-brand-gold/10 transition-colors">
                   <span className="text-2xl">📍</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-heading font-bold text-brand-dark mb-1">Corporate Office</h4>
-                  <p className="text-gray-500 font-light text-sm">Delhi, India</p>
+                  <h4 className="text-lg font-heading font-bold text-brand-dark mb-1">Head Office (Delhi)</h4>
+                  <p className="text-gray-500 font-light text-sm">New Delhi, India</p>
                 </div>
               </div>
 
-              {/* Info Card 2 */}
-              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors">
-                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10">
+              {/* Info Card 2: Jhansi Office */}
+              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors group">
+                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10 group-hover:bg-brand-gold/10 transition-colors">
+                  <span className="text-2xl">📍</span>
+                </div>
+                <div>
+                  <h4 className="text-lg font-heading font-bold text-brand-dark mb-1">Regional Branch (Jhansi)</h4>
+                  <p className="text-gray-500 font-light text-sm">Jhansi, Uttar Pradesh, India</p>
+                </div>
+              </div>
+
+              {/* Info Card 3: Phone */}
+              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors group">
+                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10 group-hover:bg-brand-gold/10 transition-colors">
                   <span className="text-2xl">📞</span>
                 </div>
                 <div>
@@ -127,9 +139,9 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Info Card 3 */}
-              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors">
-                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10">
+              {/* Info Card 4: Email */}
+              <div className="flex items-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100 hover:border-brand-gold transition-colors group">
+                <div className="bg-brand-blue/5 p-4 rounded-full text-brand-gold mr-6 border border-brand-blue/10 group-hover:bg-brand-gold/10 transition-colors">
                   <span className="text-2xl">✉️</span>
                 </div>
                 <div>
@@ -137,6 +149,7 @@ const Contact = () => {
                   <p className="text-gray-600 font-medium text-sm">info@reclinetravels.com</p>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -144,7 +157,7 @@ const Contact = () => {
           <div className="lg:col-span-7">
             <div className="bg-white p-10 md:p-12 rounded-3xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 relative overflow-hidden">
               {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-bl-full z-0"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-bl-full z-0 pointer-events-none"></div>
 
               <div className="relative z-10">
                 <h3 className="text-2xl font-heading font-bold text-brand-dark mb-2">Request a Consultation</h3>
@@ -158,6 +171,7 @@ const Contact = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   
+                  {/* Name & Phone Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Full Name *</label>
@@ -180,16 +194,41 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Dream Destination</label>
-                    <input 
-                      type="text" name="destination" value={formData.destination} onChange={handleChange}
-                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-300 text-gray-700 font-light"
-                      placeholder="e.g. Maldives, Europe, Bali"
-                      disabled={isSubmitting}
-                    />
+                  {/* Destination & Trip Type Row (Naya Field Add Kiya) */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Dream Destination</label>
+                      <input 
+                        type="text" name="destination" value={formData.destination} onChange={handleChange}
+                        className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-300 text-gray-700 font-light"
+                        placeholder="e.g. Maldives, Europe, Bali"
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Trip Type</label>
+                      <div className="relative">
+                        <select 
+                          name="tripType" value={formData.tripType} onChange={handleChange}
+                          className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-300 text-gray-600 font-light appearance-none cursor-pointer"
+                          disabled={isSubmitting}
+                        >
+                          <option value="" disabled>Select trip purpose</option>
+                          <option value="Honeymoon / Romantic">Honeymoon / Romantic</option>
+                          <option value="Family Vacation">Family Vacation</option>
+                          <option value="Friends Trip">Friends Trip</option>
+                          <option value="Solo Adventure">Solo Adventure</option>
+                          <option value="Business / Corporate">Business / Corporate</option>
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-400">
+                          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
+                  {/* Travel Month & Travelers Row (Naya Field Add Kiya) */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Travel Month</label>
@@ -201,23 +240,44 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Estimated Budget</label>
+                      <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Total Travelers</label>
                       <div className="relative">
                         <select 
-                          name="budget" value={formData.budget} onChange={handleChange}
+                          name="travelers" value={formData.travelers} onChange={handleChange}
                           className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-300 text-gray-600 font-light appearance-none cursor-pointer"
                           disabled={isSubmitting}
                         >
-                          <option value="" disabled>Select a budget range</option>
-                          <option value="Under ₹1 Lakh">Under ₹1 Lakh</option>
-                          <option value="₹1 Lakh - ₹3 Lakhs">₹1 Lakh - ₹3 Lakhs</option>
-                          <option value="₹3 Lakhs - ₹5 Lakhs">₹3 Lakhs - ₹5 Lakhs</option>
-                          <option value="Above ₹5 Lakhs">Above ₹5 Lakhs</option>
+                          <option value="" disabled>How many people?</option>
+                          <option value="1 (Solo)">1 (Solo)</option>
+                          <option value="2 (Couple / Duo)">2 (Couple / Duo)</option>
+                          <option value="3 to 5 (Family / Small Group)">3 to 5 (Family / Small Group)</option>
+                          <option value="6+ (Large Group)">6+ (Large Group)</option>
                         </select>
-                        {/* Custom Dropdown Arrow */}
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-400">
                           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Budget Row (Full Width for nice layout finish) */}
+                  <div>
+                    <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Estimated Budget</label>
+                    <div className="relative">
+                      <select 
+                        name="budget" value={formData.budget} onChange={handleChange}
+                        className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all duration-300 text-gray-600 font-light appearance-none cursor-pointer"
+                        disabled={isSubmitting}
+                      >
+                        <option value="" disabled>Select a budget range</option>
+                        <option value="Under ₹1 Lakh">Under ₹1 Lakh</option>
+                        <option value="₹1 Lakh - ₹3 Lakhs">₹1 Lakh - ₹3 Lakhs</option>
+                        <option value="₹3 Lakhs - ₹5 Lakhs">₹3 Lakhs - ₹5 Lakhs</option>
+                        <option value="Above ₹5 Lakhs">Above ₹5 Lakhs</option>
+                      </select>
+                      {/* Custom Dropdown Arrow */}
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-400">
+                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                       </div>
                     </div>
                   </div>
