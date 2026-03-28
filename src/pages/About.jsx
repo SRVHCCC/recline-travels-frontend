@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Image Imports for Team Section ONLY (Make sure these images exist in your src/img/ folder)
-import about_img_1 from '../img/about_img_1.png';
-import about_img_2 from '../img/about_img_2.png';
-import about_img_3 from '../img/about_img_3.png';
+import about_img_1 from '../img/about_img_1.1.png';
+import about_img_2 from '../img/about_img_2.1.png';
+import about_img_3 from '../img/about_img_3.1.png';
 import about_img_4 from '../img/about_img_4.png';
 
 const About = () => {
@@ -124,46 +124,60 @@ const About = () => {
 
       {/* 5. MEET THE TEAM SECTION (WITH THE 4 NEW IMAGES) */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
-          <div className="md:w-1/2">
-            <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-2">The Faces Behind The Magic</h2>
-            <h3 className="text-3xl md:text-4xl font-heading font-bold text-brand-blue mb-6">Meet Our Team</h3>
-            <p className="text-gray-700 leading-relaxed text-justify mb-6">
-              A company is only as good as the people behind it. At Recline Travels, our dedicated team of travel experts, visa consultants, and customer support specialists work tirelessly around the clock to ensure your trip is perfectly planned and executed. 
-            </p>
-            <p className="text-gray-700 leading-relaxed text-justify mb-8">
-              From crafting the perfect itinerary to providing 24/7 on-ground support while you travel, we are with you every step of the way. We take pride in treating your travel dreams with the utmost care and attention to detail.
-            </p>
-            <Link to="/contact" className="inline-block border-2 border-brand-gold text-brand-dark font-bold px-8 py-3 rounded hover:bg-brand-gold transition-colors duration-300 uppercase tracking-widest text-sm">
-              Connect With Us
-            </Link>
-          </div>
-          
-          {/* Creative Image Grid for the 4 Team Photos */}
-          <div className="md:w-1/2 w-full grid grid-cols-2 gap-4">
-            <img 
-              src={about_img_1} 
-              alt="Team Moment 1" 
-              className="rounded-2xl shadow-xl w-full h-56 object-cover transform hover:scale-105 transition-transform duration-500" 
-            />
-            <img 
-              src={about_img_2} 
-              alt="Team Moment 2" 
-              className="rounded-2xl shadow-xl w-full h-56 object-cover transform hover:scale-105 transition-transform duration-500 translate-y-8" 
-            />
-            <img 
-              src={about_img_3} 
-              alt="Team Moment 3" 
-              className="rounded-2xl shadow-xl w-full h-56 object-cover transform hover:scale-105 transition-transform duration-500" 
-            />
-            <img 
-              src={about_img_4} 
-              alt="Team Moment 4" 
-              className="rounded-2xl shadow-xl w-full h-56 object-cover transform hover:scale-105 transition-transform duration-500 translate-y-8" 
-            />
-          </div>
-        </div>
-      </section>
+  <div className="flex flex-col md:flex-row gap-16 items-center">
+    
+    {/* LEFT CONTENT */}
+    <div className="md:w-1/2">
+      <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-2">
+        The Faces Behind The Magic
+      </h2>
+      
+      <h3 className="text-3xl md:text-4xl font-heading font-bold text-brand-blue mb-6">
+        Meet Our Team
+      </h3>
+      
+      <p className="text-gray-700 leading-relaxed text-justify mb-6">
+        A company is only as good as the people behind it. At Recline Travels, our dedicated team of travel experts, visa consultants, and customer support specialists work tirelessly around the clock to ensure your trip is perfectly planned and executed.
+      </p>
+      
+      <p className="text-gray-700 leading-relaxed text-justify mb-8">
+        From crafting the perfect itinerary to providing 24/7 on-ground support while you travel, we are with you every step of the way. We take pride in treating your travel dreams with the utmost care and attention to detail.
+      </p>
+      
+      <Link
+        to="/contact"
+        className="inline-block border-2 border-brand-gold text-brand-dark font-bold px-8 py-3 rounded hover:bg-brand-gold transition-colors duration-300 uppercase tracking-widest text-sm"
+      >
+        Connect With Us
+      </Link>
+    </div>
+
+    {/* RIGHT IMAGE LAYOUT (3 IMAGES) */}
+    <div className="md:w-1/2 w-full grid grid-cols-2 gap-4">
+      
+      {/* BIG IMAGE */}
+      <img
+        src={about_img_2}
+        alt="Team Moment 1"
+        className="col-span-2 rounded-2xl shadow-xl w-full h-64 object-cover transform hover:scale-105 transition duration-500"
+      />
+
+      {/* SMALL IMAGES */}
+      <img
+        src={about_img_3}
+        alt="Team Moment 2"
+        className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
+      />
+
+      <img
+        src={about_img_4}
+        alt="Team Moment 3"
+        className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
+      />
+      
+    </div>
+  </div>
+</section>
 
       {/* 6. CTA */}
       <section className="py-20 text-center max-w-4xl mx-auto px-6 border-t border-gray-100 mt-12">

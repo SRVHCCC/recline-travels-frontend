@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { submitContactForm } from '../api/api'; // Adjust the import path based on your folder structure
 
 const Contact = () => {
   // --- SCROLL TO TOP ON LOAD ---
@@ -10,14 +12,13 @@ const Contact = () => {
     name: '',
     phone: '',
     destination: '',
-    tripType: '',     // Naya field
+    tripType: '',     
     travelDate: '',
-    travelers: '',    // Naya field
+    travelers: '',    
     budget: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,44 +27,37 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitMessage('');
 
-    // Prepare data for Web3Forms
-    const payload = {
-      access_key: "YOUR_ACCESS_KEY_HERE", // ⚠️ REPLACE THIS WITH YOUR ACTUAL EMAIL ACCESS KEY
-      subject: `New Luxury Travel Inquiry from ${formData.name}`,
-      from_name: "Recline Travels",
-      ...formData
-    };
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
+    // Using react-hot-toast's promise feature for a smooth loading -> success/error transition
+    toast.promise(
+      submitContactForm(formData),
+      {
+        loading: 'Sending your request...',
+        success: () => {
+          // Clear form on success
+          setFormData({ name: '', phone: '', destination: '', tripType: '', travelDate: '', travelers: '', budget: '' });
+          return 'Inquiry received! Our advisor will contact you shortly.';
         },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await response.json();
-      
-      if (result.success) {
-        setSubmitMessage("Thank you! Your inquiry has been elegantly received. Our luxury travel advisor will contact you shortly.");
-        // Clear all fields including the new ones
-        setFormData({ name: '', phone: '', destination: '', tripType: '', travelDate: '', travelers: '', budget: '' });
-      } else {
-        setSubmitMessage("Something went wrong. Please try again or contact us directly on WhatsApp.");
+        error: 'Something went wrong. Please try again or contact us via WhatsApp.',
+      },
+      {
+        style: {
+          minWidth: '250px',
+        },
+        success: {
+          duration: 5000,
+          icon: '✨',
+        },
       }
-    } catch (error) {
-      setSubmitMessage("Network error. Please check your connection and try again.");
-    } finally {
+    ).finally(() => {
       setIsSubmitting(false);
-    }
+    });
   };
 
   return (
     <div className="w-full bg-[#FAFAFA] pt-20 font-sans">
+      {/* Toaster Component to render the notifications */}
+      <Toaster position="top-center" reverseOrder={false} />
       
       {/* 1. LUXURY HERO HEADER */}
       <section className="relative w-full h-[60vh] flex items-center justify-center text-white">
@@ -162,12 +156,6 @@ const Contact = () => {
               <div className="relative z-10">
                 <h3 className="text-2xl font-heading font-bold text-brand-dark mb-2">Request a Consultation</h3>
                 <p className="text-gray-500 text-sm font-light mb-8">Fill out the details below and our travel expert will prepare a bespoke proposal for you.</p>
-                
-                {submitMessage && (
-                  <div className={`p-4 mb-8 rounded-xl text-sm font-medium border ${submitMessage.includes('Thank you') ? 'bg-green-50 text-green-800 border-green-200' : 'bg-red-50 text-red-800 border-red-200'}`}>
-                    {submitMessage}
-                  </div>
-                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   
@@ -194,7 +182,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Destination & Trip Type Row (Naya Field Add Kiya) */}
+                  {/* Destination & Trip Type Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Dream Destination</label>
@@ -228,7 +216,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Travel Month & Travelers Row (Naya Field Add Kiya) */}
+                  {/* Travel Month & Travelers Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Travel Month</label>
@@ -260,7 +248,7 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Budget Row (Full Width for nice layout finish) */}
+                  {/* Budget Row */}
                   <div>
                     <label className="block text-xs font-semibold text-brand-dark uppercase tracking-widest mb-2">Estimated Budget</label>
                     <div className="relative">
@@ -275,7 +263,6 @@ const Contact = () => {
                         <option value="₹3 Lakhs - ₹5 Lakhs">₹3 Lakhs - ₹5 Lakhs</option>
                         <option value="Above ₹5 Lakhs">Above ₹5 Lakhs</option>
                       </select>
-                      {/* Custom Dropdown Arrow */}
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-400">
                         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                       </div>
