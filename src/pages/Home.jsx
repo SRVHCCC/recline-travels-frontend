@@ -8,6 +8,7 @@ import turkey from "../img/turkey.webp"
 import nort_est from "../img/nort_est.jpg"
 import auli from "../img/new.jpg"
 import bir_billing from "../img/bir_billing.webp"
+import founder from "../img/founder.jpeg"
 
 
 const Home = () => {
@@ -161,7 +162,8 @@ const Home = () => {
           </div>
         </div>
         <div className="lg:w-1/2 w-full h-[500px] rounded-t-full bg-gray-200 shadow-2xl relative overflow-hidden border-b-8 border-brand-gold flex items-center justify-center">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1976')] bg-cover bg-center opacity-90"></div>
+            <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{ backgroundImage: `url(${founder})` , backgroundPosition: "center 20%" }}
+></div>
         </div>
       </section>
 

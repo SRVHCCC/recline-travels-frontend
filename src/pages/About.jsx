@@ -6,7 +6,7 @@ import about_img_1 from '../img/about_img_1.1.png';
 import about_img_2 from '../img/about_img_2.1.png';
 import about_img_3 from '../img/about_img_3.1.png';
 import about_img_4 from '../img/about_img_4.png';
-
+import founder from "../img/founder.jpeg"
 const About = () => {
   // --- SCROLL TO TOP ON LOAD ---
   useEffect(() => {
@@ -69,8 +69,7 @@ const About = () => {
           
           {/* Founder Image Placeholder */}
           <div className="lg:col-span-4 h-[500px] bg-gray-200 rounded-xl overflow-hidden border-4 border-brand-gold relative shadow-2xl">
-             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop')] bg-cover bg-center opacity-90"></div>
-             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
+          <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{ backgroundImage: `url(${founder})` }}></div>             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
                 <h4 className="text-2xl font-heading font-bold text-white">Rukshar Khan</h4>
                 <p className="text-brand-gold text-sm font-semibold">Founder & CEO, Recline Travels</p>
                 <p className="text-gray-300 text-xs mt-1">MBA in Tourism Management</p>
