@@ -36,7 +36,7 @@ const Contact = () => {
       },
       body: JSON.stringify({
         ...formData,
-        access_key: "45f56407-0ac7-4880-9880-4b1d708cc0f5", // Aapka Web3Forms Access Key
+        access_key: "fbad10c4-5796-4e21-b846-e881921dc2be", // Aapka Web3Forms Access Key
       }),
     }).then(async (response) => {
       let json = await response.json();
@@ -319,6 +319,9 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+
 
 // import React, { useState, useEffect } from 'react';
 // import toast, { Toaster } from 'react-hot-toast';
