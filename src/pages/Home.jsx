@@ -24,7 +24,10 @@ import baku2 from "../img/baku2.avif";
 import srilanka from "../img/srilanka.avif";
 import srilanka1 from "../img/srilanka1.avif";
 import srilanka2 from "../img/srilanka2.webp";
-import malaysia from "../img/malaysia.avif";
+import malaysia from "../img/malaysiaa.avif";
+import malaysia1 from "../img/malaysia1.avif";
+import malaysia2 from "../img/malaysia2.avif";
+
 import andaman from "../img/andaman.avif";
 import andaman1 from "../img/andaman1.avif";
 import rajsthan from "../img/rajsthan.avif";
@@ -120,9 +123,9 @@ const Home = () => {
       srilanka2
     ]},
     { name: "Malaysia", details: "3 Nights", price: "14,000/-", imgs: [
-      "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&q=80&w=600",
-      malaysia
+      malaysia,
+      malaysia1,
+      malaysia2
     ]}
   ];
 
