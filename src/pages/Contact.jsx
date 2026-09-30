@@ -74,30 +74,33 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full bg-[#FAFAFA] pt-20 font-sans">
+    <div className="w-full bg-[#FAFAFA] font-sans">
       {/* Toaster Component to render the notifications */}
       <Toaster position="top-center" reverseOrder={false} />
       
       {/* 1. LUXURY HERO HEADER */}
-      <section className="relative w-full h-[60vh] flex items-center justify-center text-white">
+      <section className="relative w-full h-[70vh] flex items-center justify-center text-white transition-all duration-500">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1563911302283-d2bc129e7570')] bg-cover bg-center"></div>
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-700"
+             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=2000')` }}>
+        </div>
+        
+        {/* Overlay matching Packages.jsx */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-brand-dark/90 z-0"></div>
+        
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto animate-fade-in-up">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20 animate-fade-in-up">
           {/* Badge */}
-          <span className="bg-yellow-500 text-black px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] rounded-md mb-6 inline-block shadow-lg">
+          <span className="bg-brand-gold text-brand-dark px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] rounded-sm mb-6 inline-block shadow-lg">
             Exclusive Service
           </span>
           {/* Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-2xl">
+          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 drop-shadow-2xl text-white">
             Begin Your Journey
           </h1>
           {/* Description */}
-          <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
-            Connect with our dedicated travel artisans to craft your perfect
-            international holiday or bespoke honeymoon experience.
+          <p className="text-lg md:text-2xl font-light drop-shadow-lg text-gray-200 tracking-wide max-w-3xl mx-auto">
+            Connect with our dedicated travel artisans to craft your perfect international holiday or bespoke honeymoon experience.
           </p>
         </div>
       </section>

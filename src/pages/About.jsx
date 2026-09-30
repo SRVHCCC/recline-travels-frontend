@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Image Imports for Team Section ONLY (Make sure these images exist in your src/img/ folder)
-import about_img_1 from '../img/about_img_1.1.png';
 import about_img_2 from '../img/about_img_2.1.png';
 import about_img_3 from '../img/about_img_3.1.png';
 import about_img_4 from '../img/about_img_4.png';
-import founder from "../img/founder.jpeg"
+import founder from "../img/ruksar.png"
 const About = () => {
   // --- SCROLL TO TOP ON LOAD ---
   useEffect(() => {
@@ -21,24 +20,31 @@ const About = () => {
   ];
 
   return (
-    <div className="w-full bg-brand-light pt-20">
-      
-      {/* 1. HERO SECTION (Original Image Restored) */}
-      <section className="relative w-full h-[55vh] flex items-center justify-center text-white">
-        {/* Background Image */}
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800')] bg-cover bg-center"></div>
+    <div className="w-full bg-brand-light">
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
+      {/* 1. HERO SECTION */}
+      <section className="relative w-full h-[70vh] flex items-center justify-center text-white transition-all duration-500">
+        {/* Background Image */}
+        <div className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-700"
+             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=2000')` }}>
+        </div>
+
+        {/* Overlay matching Packages.jsx */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-brand-dark/90 z-0"></div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-xl">
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20 animate-fade-in-up">
+          {/* Badge */}
+          <span className="bg-brand-gold text-brand-dark px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] rounded-sm mb-6 inline-block shadow-lg">
+            About Us
+          </span>
+          {/* Heading */}
+          <h1 className="text-5xl md:text-7xl font-heading font-bold mb-6 drop-shadow-2xl text-white">
             Our Story
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 leading-relaxed max-w-2xl mx-auto">
-            More than just tickets and hotels — we create emotions, milestones,
-            and lifelong memories.
+          {/* Description */}
+          <p className="text-lg md:text-2xl font-light drop-shadow-lg text-gray-200 tracking-wide max-w-3xl mx-auto">
+            More than just tickets and hotels — we create emotions, milestones, and lifelong memories.
           </p>
         </div>
       </section>
@@ -64,23 +70,23 @@ const About = () => {
       {/* 3. FOUNDER VISION & MOTIVATION (Original Placeholder Restored) */}
       <section className="bg-brand-dark text-brand-light py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-brand-gold rounded-full mix-blend-multiply filter blur-[100px] opacity-20 pointer-events-none"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
+
           {/* Founder Image Placeholder */}
           <div className="lg:col-span-4 h-[500px] bg-gray-200 rounded-xl overflow-hidden border-4 border-brand-gold relative shadow-2xl">
-          <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{ backgroundImage: `url(${founder})` }}></div>             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
-                <h4 className="text-2xl font-heading font-bold text-white">Rukshar Khan</h4>
-                <p className="text-brand-gold text-sm font-semibold">Founder & CEO, Recline Travels</p>
-                <p className="text-gray-300 text-xs mt-1">MBA in Tourism Management</p>
-             </div>
+            <div className="absolute inset-0 bg-cover bg-center opacity-90" style={{ backgroundImage: `url(${founder})` }}></div>             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6">
+              <h4 className="text-2xl font-heading font-bold text-white">Rukshar Khan</h4>
+              <p className="text-brand-gold text-sm font-semibold">Founder & CEO, Recline Travels</p>
+              <p className="text-gray-300 text-xs mt-1">MBA in Tourism Management</p>
+            </div>
           </div>
 
           {/* Founder Story */}
           <div className="lg:col-span-8">
             <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-2">The Visionary</h2>
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Founder's Journey</h3>
-            
+
             <div className="space-y-4 text-gray-300 leading-relaxed text-justify">
               <p>
                 Rukshar Khan began her journey in the tourism industry in 2018 with a passion for global travel and client experience. With a strong academic foundation through her MBA in Tourism Management, she understood early on that travel is more than just logistics.
@@ -123,60 +129,60 @@ const About = () => {
 
       {/* 5. MEET THE TEAM SECTION (WITH THE 4 NEW IMAGES) */}
       <section className="max-w-7xl mx-auto px-6 py-24">
-  <div className="flex flex-col md:flex-row gap-16 items-center">
-    
-    {/* LEFT CONTENT */}
-    <div className="md:w-1/2">
-      <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-2">
-        The Faces Behind The Magic
-      </h2>
-      
-      <h3 className="text-3xl md:text-4xl font-heading font-bold text-brand-blue mb-6">
-        Meet Our Team
-      </h3>
-      
-      <p className="text-gray-700 leading-relaxed text-justify mb-6">
-        A company is only as good as the people behind it. At Recline Travels, our dedicated team of travel experts, visa consultants, and customer support specialists work tirelessly around the clock to ensure your trip is perfectly planned and executed.
-      </p>
-      
-      <p className="text-gray-700 leading-relaxed text-justify mb-8">
-        From crafting the perfect itinerary to providing 24/7 on-ground support while you travel, we are with you every step of the way. We take pride in treating your travel dreams with the utmost care and attention to detail.
-      </p>
-      
-      <Link
-        to="/contact"
-        className="inline-block border-2 border-brand-gold text-brand-dark font-bold px-8 py-3 rounded hover:bg-brand-gold transition-colors duration-300 uppercase tracking-widest text-sm"
-      >
-        Connect With Us
-      </Link>
-    </div>
+        <div className="flex flex-col md:flex-row gap-16 items-center">
 
-    {/* RIGHT IMAGE LAYOUT (3 IMAGES) */}
-    <div className="md:w-1/2 w-full grid grid-cols-2 gap-4">
-      
-      {/* BIG IMAGE */}
-      <img
-        src={about_img_2}
-        alt="Team Moment 1"
-        className="col-span-2 rounded-2xl shadow-xl w-full h-64 object-cover transform hover:scale-105 transition duration-500"
-      />
+          {/* LEFT CONTENT */}
+          <div className="md:w-1/2">
+            <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-2">
+              The Faces Behind The Magic
+            </h2>
 
-      {/* SMALL IMAGES */}
-      <img
-        src={about_img_3}
-        alt="Team Moment 2"
-        className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
-      />
+            <h3 className="text-3xl md:text-4xl font-heading font-bold text-brand-blue mb-6">
+              Meet Our Team
+            </h3>
 
-      <img
-        src={about_img_4}
-        alt="Team Moment 3"
-        className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
-      />
-      
-    </div>
-  </div>
-</section>
+            <p className="text-gray-700 leading-relaxed text-justify mb-6">
+              A company is only as good as the people behind it. At Recline Travels, our dedicated team of travel experts, visa consultants, and customer support specialists work tirelessly around the clock to ensure your trip is perfectly planned and executed.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed text-justify mb-8">
+              From crafting the perfect itinerary to providing 24/7 on-ground support while you travel, we are with you every step of the way. We take pride in treating your travel dreams with the utmost care and attention to detail.
+            </p>
+
+            <Link
+              to="/contact"
+              className="inline-block border-2 border-brand-gold text-brand-dark font-bold px-8 py-3 rounded hover:bg-brand-gold transition-colors duration-300 uppercase tracking-widest text-sm"
+            >
+              Connect With Us
+            </Link>
+          </div>
+
+          {/* RIGHT IMAGE LAYOUT (3 IMAGES) */}
+          <div className="md:w-1/2 w-full grid grid-cols-2 gap-4">
+
+            {/* BIG IMAGE */}
+            <img
+              src={about_img_2}
+              alt="Team Moment 1"
+              className="col-span-2 rounded-2xl shadow-xl w-full h-64 object-cover transform hover:scale-105 transition duration-500"
+            />
+
+            {/* SMALL IMAGES */}
+            <img
+              src={about_img_3}
+              alt="Team Moment 2"
+              className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
+            />
+
+            <img
+              src={about_img_4}
+              alt="Team Moment 3"
+              className="rounded-2xl shadow-xl w-full h-48 object-cover transform hover:scale-105 transition duration-500"
+            />
+
+          </div>
+        </div>
+      </section>
 
       {/* 6. CTA */}
       <section className="py-20 text-center max-w-4xl mx-auto px-6 border-t border-gray-100 mt-12">

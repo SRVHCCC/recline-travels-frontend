@@ -78,11 +78,6 @@ const Packages = () => {
   // Set active package state (defaults to first one - Maldives)
   const [activePkg, setActivePkg] = useState(packagesData[0]);
 
-  // Reset active day accordion when switching packages
-  useEffect(() => {
-    setActiveDay(0);
-  }, [activePkg]);
-
   const faqs = [
     { q: "Is visa assistance provided for international packages?", a: "Yes! Recline Travels provides end-to-end visa documentation and assistance support for all our international packages, including Schengen, Dubai, and Bali." },
     { q: "Are flights included in these packages?", a: "Our base luxury packages exclude international flights to give you flexibility with airlines and cities of departure. However, our travel advisors can seamlessly book them for you at the best rates." },
@@ -112,36 +107,18 @@ const Packages = () => {
   ];
 
   return (
-    <div className="w-full bg-[#FAFAFA] pt-20 font-sans">
-      
-      {/* --- PACKAGE SELECTOR TAB BAR --- */}
-      <div className="bg-white shadow-md sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-center gap-4 md:gap-8 overflow-x-auto no-scrollbar">
-          {packagesData.map((pkg) => (
-            <button
-              key={pkg.id}
-              onClick={() => setActivePkg(pkg)}
-              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 whitespace-nowrap border-2 ${
-                activePkg.id === pkg.id 
-                  ? 'bg-brand-dark text-brand-gold border-brand-dark shadow-lg' 
-                  : 'bg-white text-gray-500 border-gray-200 hover:border-brand-gold hover:text-brand-dark'
-              }`}
-            >
-              {pkg.tabName}
-            </button>
-          ))}
-        </div>
-      </div>
+    <div className="w-full bg-[#FAFAFA] font-sans">
 
       {/* 1. HERO IMAGE & TITLE (Dynamic) */}
       <section className="relative w-full h-[70vh] flex items-center justify-center text-brand-light transition-all duration-500">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-700"
           style={{ backgroundImage: `url('${activePkg.heroImg}')` }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-brand-dark/90 z-0"></div>
-        
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-12 animate-fade-in-up">
+        {/* Added a stronger dark gradient at top so the transparent navbar text is perfectly visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-brand-dark/90 z-0"></div>
+
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20 animate-fade-in-up">
           <span className="bg-brand-gold text-brand-dark px-4 py-1.5 text-xs font-bold uppercase tracking-[0.3em] rounded-sm mb-6 inline-block shadow-lg">
             {activePkg.badge}
           </span>
@@ -154,11 +131,32 @@ const Packages = () => {
         </div>
       </section>
 
+      {/* --- PACKAGE SELECTOR TAB BAR --- */}
+      <div className="bg-white shadow-md sticky top-0 z-40 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-center gap-4 md:gap-8 overflow-x-auto no-scrollbar">
+          {packagesData.map((pkg) => (
+            <button
+              key={pkg.id}
+              onClick={() => {
+                setActivePkg(pkg);
+                setActiveDay(0);
+              }}
+              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 whitespace-nowrap border-2 ${activePkg.id === pkg.id
+                  ? 'bg-brand-dark text-brand-gold border-brand-dark shadow-lg'
+                  : 'bg-white text-gray-500 border-gray-200 hover:border-brand-gold hover:text-brand-dark'
+                }`}
+            >
+              {pkg.tabName}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        
+
         {/* LEFT COLUMN: Main Content */}
         <div className="lg:col-span-8 space-y-20">
-          
+
           {/* Destination Overview with Side Image */}
           <section className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2">
@@ -169,7 +167,7 @@ const Packages = () => {
               </p>
             </div>
             <div className="md:w-1/2 w-full h-72 rounded-2xl overflow-hidden shadow-2xl relative">
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center transition-all duration-700"
                 style={{ backgroundImage: `url('${activePkg.sideImg}')` }}
               ></div>
@@ -195,7 +193,7 @@ const Packages = () => {
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-green-50/50 p-8 rounded-2xl border border-green-100 shadow-sm">
               <h3 className="text-xl font-heading font-bold text-green-900 mb-6 flex items-center">
-                <span className="bg-green-200 text-green-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✓</span> 
+                <span className="bg-green-200 text-green-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✓</span>
                 What's Included
               </h3>
               <ul className="space-y-4 text-gray-700 text-sm font-light">
@@ -208,7 +206,7 @@ const Packages = () => {
             </div>
             <div className="bg-red-50/50 p-8 rounded-2xl border border-red-100 shadow-sm">
               <h3 className="text-xl font-heading font-bold text-red-900 mb-6 flex items-center">
-                <span className="bg-red-200 text-red-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✕</span> 
+                <span className="bg-red-200 text-red-700 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">✕</span>
                 Not Included
               </h3>
               <ul className="space-y-4 text-gray-700 text-sm font-light">
@@ -226,7 +224,7 @@ const Packages = () => {
             <div className="space-y-4">
               {activePkg.itinerary.map((item, index) => (
                 <div key={index} className={`rounded-xl overflow-hidden transition-all duration-300 ${activeDay === index ? 'bg-white shadow-lg border border-brand-gold/30' : 'bg-transparent border border-gray-200 hover:border-gray-300'}`}>
-                  <button 
+                  <button
                     onClick={() => setActiveDay(activeDay === index ? null : index)}
                     className={`w-full text-left px-8 py-6 flex justify-between items-center transition-colors ${activeDay === index ? 'bg-brand-blue/5' : 'bg-white'}`}
                   >
@@ -258,7 +256,7 @@ const Packages = () => {
             <div className="space-y-2">
               {faqs.map((faq, index) => (
                 <div key={index} className="border-b border-gray-100 last:border-0 pb-2">
-                  <button 
+                  <button
                     onClick={() => setActiveFAQ(activeFAQ === index ? null : index)}
                     className="w-full text-left py-4 flex justify-between items-center text-brand-dark font-medium hover:text-brand-blue transition-colors"
                   >
@@ -285,19 +283,19 @@ const Packages = () => {
             </div>
             <h3 className="text-xl font-heading font-bold text-gray-500 mb-1">Total Package Price</h3>
             <p className="text-gray-400 text-sm mb-6 pb-6 border-b border-gray-100">Pricing is per person on twin sharing</p>
-            
+
             <div className="mb-8 flex items-end gap-3">
               <span className="text-5xl font-heading font-bold text-brand-dark">₹{activePkg.price}</span>
               <span className="text-xl text-gray-400 line-through font-light mb-1">₹{activePkg.originalPrice}</span>
             </div>
-            
+
             <div className="space-y-5 mb-10">
               <div className="flex items-start text-sm text-gray-600">
-                <span className="text-brand-gold mr-3 text-lg">💳</span> 
+                <span className="text-brand-gold mr-3 text-lg">💳</span>
                 <span>Flexible & EMI Payment Options Available via partner banks.</span>
               </div>
               <div className="flex items-start text-sm text-gray-600">
-                <span className="text-brand-gold mr-3 text-lg">🎧</span> 
+                <span className="text-brand-gold mr-3 text-lg">🎧</span>
                 <span>24/7 Dedicated Travel Advisor from booking to return.</span>
               </div>
             </div>
@@ -315,7 +313,7 @@ const Packages = () => {
       <section className="bg-brand-dark text-brand-light py-24 relative overflow-hidden">
         {/* Subtle Background Glow */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-gold rounded-full mix-blend-multiply filter blur-[150px] opacity-10 pointer-events-none"></div>
-        
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-sm font-semibold text-brand-gold uppercase tracking-[0.2em] mb-4">Real Client Stories</h2>
@@ -325,16 +323,16 @@ const Packages = () => {
               <span className="text-gray-300 font-light">4.9 / 5 Rating</span>
             </div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {realTestimonials.map((review, idx) => (
               <div key={idx} className="bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10 relative hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between h-full">
                 <div className="absolute -top-5 left-8 bg-brand-gold text-brand-dark w-10 h-10 flex items-center justify-center rounded-full text-3xl font-serif">❝</div>
-                
+
                 <p className="text-base font-light italic text-gray-300 mt-6 mb-8 leading-relaxed flex-grow">
                   "{review.text}"
                 </p>
-                
+
                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/10">
                   <img src={review.img} alt={review.name} className="w-14 h-14 rounded-full object-cover border-2 border-brand-gold" />
                   <div>

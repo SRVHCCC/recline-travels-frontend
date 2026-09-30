@@ -7,12 +7,6 @@ import VisaServices from './pages/VisaServices';
 import Contact from './pages/Contact';
 import About from './pages/About';
 
-// Temporary placeholders for other pages
-// const Packages = () => <div className="flex items-center justify-center h-screen text-3xl font-heading text-brand-blue pt-20">Packages Page Coming Soon</div>;
-// const VisaServices = () => <div className="flex items-center justify-center h-screen text-3xl font-heading text-brand-blue pt-20">Visa Services Coming Soon</div>;
-// const Contact = () => <div className="flex items-center justify-center h-screen text-3xl font-heading text-brand-blue pt-20">Contact Page Coming Soon</div>;
-// const About = () => <div className="flex items-center justify-center h-screen text-3xl font-heading text-brand-blue pt-20">About Page Coming Soon</div>;
-
 function App() {
   return (
     <Router>
